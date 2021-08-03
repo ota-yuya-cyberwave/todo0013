@@ -68,7 +68,7 @@ group :development do
   gem 'bcrypt_pbkdf'
 end
 
-# enviroment settingredis
+# enviroment setting
 gem 'dotenv-rails'
 
 # https://github.com/heartcombo/devise
