@@ -42,3 +42,34 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :development, :test do
+  # Use Capistrano for deployment
+  gem 'capistrano-rails'
+
+   # testing framework
+  gem 'rspec-rails', '~> 4.1.0'
+
+  # Ruby static code analyzer
+   gem 'rubocop', '~> 1.18.0'
+
+   gem 'factory_bot_rails'
+   gem 'faker'
+   gem 'gimei'
+end
+
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
+end
+
+# enviroment settingredis
+gem 'dotenv-rails'
+
+# https://github.com/heartcombo/devise
+gem 'devise', '~> 4.8.0'
