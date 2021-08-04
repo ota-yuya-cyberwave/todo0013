@@ -1,1 +1,9 @@
 <%= render "navbar" %>
+
+<div class="mb-3">
+  <div>カテゴリ名: <%= @category.title %></div>
+</div>
+
+<a href="/categories/<%= @category.id %>/edit" class="btn btn-success">編集</a>
+<%= link_to "削除", @category, class: :"btn btn-danger", method: :delete, data: { confirm: "カテゴリを削除するとそれに含まれるTodoも削除されます\n本当に削除しますか？" } %>
+<a href="/categories/" class="btn btn-secondary">戻る</a>
