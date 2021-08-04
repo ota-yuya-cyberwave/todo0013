@@ -43,3 +43,6 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 plugin :tmp_restart
 
 bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
+if ENV.fetch("RAILS_ENV") == "staging" || ENV.fetch("RAILS_ENV") == "production" then
+    daemonize
+end

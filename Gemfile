@@ -73,3 +73,6 @@ gem 'dotenv-rails'
 
 # https://github.com/heartcombo/devise
 gem 'devise', '~> 4.8.0'
+
+# https://github.com/kigster/puma-daemon
+gem 'puma-daemon'
