@@ -1,1 +1,19 @@
 <%= render "navbar" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>カテゴリ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories && @categories.each do |category| %>
+      <tr>
+        <td><a href="/categories/<%= category.id %>"><%= category.title %></a></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="/categories/new">
+  <button type="button" class="btn btn-primary">追加する</button>
+</a>

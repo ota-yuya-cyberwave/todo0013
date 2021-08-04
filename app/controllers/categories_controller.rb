@@ -2,11 +2,11 @@ class CategoriesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-      @categories = Category.all
+      @categories = Category.where(user_id: current_user.id)
     end
   
     def new
-      @category = Category.new
+      @category = Category.new(user_id: current_user.id)
     end
   
     def create
