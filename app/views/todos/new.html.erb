@@ -1,0 +1,23 @@
+<%= render "navbar" %>
+
+<%= form_for @todo, html: { class: "mx-2" } do |f| %>
+  <div class="mb-3">
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, class: "form-control", required: true, placeholder: "必須" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :category_id, "カテゴリ" %>
+    <%= f.select :category_id, @categories, {}, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :content, "内容" %>
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :start_at, "開始した日" %>
+    <%= f.datetime_field :start_at, class: "form-control" %>
+  </div>
+
+  <button type="submit" class="btn btn-primary">作成</button>
+  <a href="/todos" class="btn btn-secondary">戻る</a>
+<% end %>

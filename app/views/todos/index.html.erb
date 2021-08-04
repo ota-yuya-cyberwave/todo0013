@@ -1,1 +1,28 @@
 <%= render "navbar" %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>カテゴリ</th>
+      <th>内容</th>
+      <th>開始した日</th>
+      <th>完了した日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @todos && @todos.each do |todo| %>
+      <tr>
+        <td><a href="/todos/<%= todo.id %>"><%= todo.title %></a></td>
+        <td><%= todo.category ? todo.title : "なし" %></td>
+        <td><%= todo.content %></td>
+        <td><%= todo.start_at.strftime('%Y-%m-%d %k時')  %></td>
+        <td><%= todo.completed_at ? todo.completed_at.strftime('%Y-%m-%d %k時') : ""  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="/todos/new">
+  <button type="button" class="btn btn-primary">追加する</button>
+</a>
