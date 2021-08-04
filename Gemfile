@@ -58,8 +58,11 @@ group :development, :test do
    gem 'gimei'
 end
 
+gem 'sd_notify'
+
 group :development do
   gem 'capistrano'
+  gem 'capistrano3-puma'
   gem 'capistrano-rbenv', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-bundler', require: false
@@ -73,6 +76,3 @@ gem 'dotenv-rails'
 
 # https://github.com/heartcombo/devise
 gem 'devise', '~> 4.8.0'
-
-# https://github.com/kigster/puma-daemon
-gem 'puma-daemon'
