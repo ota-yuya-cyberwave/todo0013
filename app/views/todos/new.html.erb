@@ -7,7 +7,7 @@
   </div>
   <div class="mb-3">
     <%= f.label :category_id, "カテゴリ" %>
-    <%= f.select :category_id, @categories, {}, class: "form-control" %>
+    <%= f.select :category_id, @categories, {include_blank: "なし"}, class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= f.label :content, "内容" %>
@@ -15,7 +15,7 @@
   </div>
   <div class="mb-3">
     <%= f.label :start_at, "開始した日" %>
-    <%= f.datetime_field :start_at, class: "form-control" %>
+    <%= f.datetime_field :start_at, class: "form-control", value: Time.now.strftime("%Y-%m-%dT%k:%M") %>
   </div>
 
   <button type="submit" class="btn btn-primary">作成</button>

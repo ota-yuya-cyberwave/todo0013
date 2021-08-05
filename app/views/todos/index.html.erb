@@ -16,7 +16,7 @@
         <td><a href="/todos/<%= todo.id %>"><%= todo.title %></a></td>
         <td><%= todo.category ? todo.title : "なし" %></td>
         <td><%= todo.content %></td>
-        <td><%= todo.start_at.strftime('%Y-%m-%d %k時')  %></td>
+        <td><%= todo.start_at.strftime('%Y-%m-%d %k時') %></td>
         <td><%= todo.completed_at ? todo.completed_at.strftime('%Y-%m-%d %k時') : ""  %></td>
       </tr>
     <% end %>
