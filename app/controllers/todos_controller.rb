@@ -25,6 +25,7 @@ class TodosController < ApplicationController
     end
   
     def edit
+      @categories = Category.where(user_id: current_user.id).map { |c| [c.title, c.id] }
       @todo = Todo.find(params[:id])
     end
   
@@ -33,6 +34,8 @@ class TodosController < ApplicationController
       if @todo.update(todo_params)
         redirect_to @todo
       else
+        flash[:start_at] = @todo.errors[:start_at]
+        @categories = Category.where(user_id: current_user.id).map { |c| [c.title, c.id] }
         render "edit"
       end
     end
