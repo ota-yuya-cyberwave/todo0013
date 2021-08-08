@@ -5,9 +5,9 @@
   <div>カテゴリ: <%= @todo.category ? @todo.category.title : "なし" %></div>
   <div>内容: <%= @todo.content %></div>
   <div>開始した日: <%= @todo.start_at.strftime("%Y-%m-%d %k:%M") %></div>
-  <div>完了した日: <%= @todo.completed_at.strftime("%Y-%m-%d %k:%M") %></div>
+  <div>完了した日: <%= @todo.completed_at ? @todo.completed_at.strftime("%Y-%m-%d %k:%M") : "" %></div>
 </div>
 
 <a href="/todos/<%= @todo.id %>/edit" class="btn btn-success">編集</a>
 <%= link_to "削除", @todo, class: :"btn btn-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
-<a href="/todos/" class="btn btn-secondary">戻る</a>
+<%= link_to "戻る", :back, class: :"btn btn-secondary" %>

@@ -21,6 +21,7 @@ class CategoriesController < ApplicationController
   
     def show
       @category = Category.find(params[:id])
+      @todos = Todo.where(user_id: current_user.id, category_id: params[:id])
     end
 
     def edit
