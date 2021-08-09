@@ -19,6 +19,6 @@
   </div>
 
   <button type="submit" class="btn btn-primary">更新</button>
-  <%= link_to "戻る", category_todo_path([@todo.category, @todo]), class: :"btn btn-secondary" %>
+  <%= link_to "戻る", category_todo_path(@todo.category, @todo), class: :"btn btn-secondary" %>
 <% end %>
 
