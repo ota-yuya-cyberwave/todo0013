@@ -3,8 +3,7 @@
     <div class="navbar-expand" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         
-        <a class="nav-link active" aria-current="page" href="#">Categories</a>
-        <a class="nav-link" href="/todos">Todos</a>
+        <a class="nav-link active" aria-current="page" href="/categories">Categories</a>
       </div>
     </div>
   </div>
@@ -12,3 +11,13 @@
 <h1>
   Categories
 </h1>
+
+<% flash.each do |key, value| %>
+  <% if value.kind_of?(ActiveModel::DeprecationHandlingMessageArray) %>
+    <% value.each do |txt| %>
+      <%= content_tag(:div, txt, class: key) %>
+    <% end %>
+  <% else %>
+    <%= content_tag(:div, value) %>
+  <% end %>
+<% end %>

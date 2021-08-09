@@ -14,4 +14,48 @@
   <div><%= @category.title %> のTodo</div>
 </div>
 
-<%= render "shared/todo_table" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>カテゴリ</th>
+      <th>内容</th>
+      <th>開始した日</th>
+      <th>完了した日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @todos && @todos.each do |todo| %>
+      <tr>
+        <td><a href="categories<%= @category.id %>/todos/<%= todo.id %>"><%= todo.title %></a></td>
+        <td><%= todo.category ? todo.category.title : "なし" %></td>
+        <td><%= todo.content %></td>
+        <td><%= todo.start_at.strftime("%Y-%m-%d %k:%M") %></td>
+        <td><%= todo.completed_at ? todo.completed_at.strftime("%Y-%m-%d %k:%M") : ""  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="mb-3">
+新しいTodoを作る
+</div>
+
+
+<%= form_for [@category, @todo], html: { class: "mx-2" } do |f| %>
+  <div style="width: 400px; height: 250px;" class="mb-3 ms-2 border border-primary rounded">
+    <div class="mb-3">
+      <%= f.label :title, "タイトル" %>
+      <%= f.text_field :title, class: "form-control", required: true, placeholder: "必須" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :content, "内容" %>
+      <%= f.text_field :content, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :start_at, "開始した日" %>
+      <%= f.datetime_field :start_at, class: "form-control", value: Time.now.strftime("%Y-%m-%dT%H:%M") %>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">作成</button>
+<% end %>

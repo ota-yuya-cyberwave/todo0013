@@ -1,19 +1,9 @@
 <%= render "navbar" %>
 
-<% flash.each do |key, value| %>
-  <% value.each do |txt| %>
-    <%= content_tag(:div, txt, class: key) %>
-  <% end %>
-<% end %>
-
-<%= form_for @todo, html: { class: "mx-2" } do |f| %>
+<%= form_for [@todo.category, @todo], html: { class: "mx-2" } do |f| %>
   <div class="mb-3">
     <%= f.label :title, "タイトル" %>
     <%= f.text_field :title, class: "form-control", required: true, placeholder: "必須" %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :category_id, "カテゴリ" %>
-    <%= f.select :category_id, @categories, {include_blank: "なし"}, class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= f.label :content, "内容" %>
@@ -29,6 +19,6 @@
   </div>
 
   <button type="submit" class="btn btn-primary">更新</button>
-  <a href="/todos/<%= @todo.id %>" class="btn btn-secondary">戻る</a>
+  <%= link_to "戻る", category_todo_path([@todo.category, @todo]), class: :"btn btn-secondary" %>
 <% end %>
 

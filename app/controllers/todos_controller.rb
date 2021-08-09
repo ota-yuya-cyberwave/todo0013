@@ -11,13 +11,10 @@ class TodosController < ApplicationController
     end
   
     def create
-      @todo = Todo.new(todo_params)
+      category = Category.find_by(user_id: current_user.id, id: params[:category_id])
+      @todo = category.todos.build(todo_params)
       @todo.user_id = current_user.id
-      if @todo.save
-        redirect_to action: :index
-      else
-        render "new"
-      end
+      redirect_to category
     end
   
     def show
@@ -32,7 +29,7 @@ class TodosController < ApplicationController
     def update
       @todo = Todo.find(params[:id])
       if @todo.update(todo_params)
-        redirect_to @todo
+        redirect_to @todo.category
       else
         flash[:start_at] = @todo.errors[:start_at]
         @categories = Category.where(user_id: current_user.id).map { |c| [c.title, c.id] }

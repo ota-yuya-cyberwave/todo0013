@@ -8,6 +8,6 @@
   <div>完了した日: <%= @todo.completed_at ? @todo.completed_at.strftime("%Y-%m-%d %k:%M") : "" %></div>
 </div>
 
-<a href="/todos/<%= @todo.id %>/edit" class="btn btn-success">編集</a>
-<%= link_to "削除", @todo, class: :"btn btn-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
-<%= link_to "戻る", :back, class: :"btn btn-secondary" %>
+<%= link_to "編集", edit_category_todo_path([@todo.category, @todo]), class: :"btn btn-success" %>
+<%= link_to "削除", [@todo.category, @todo], class: :"btn btn-danger", method: :delete, data: { confirm: "本当に削除しますか？" } %>
+<%= link_to "戻る", category_path(@todo.category), class: :"btn btn-secondary" %>

@@ -15,7 +15,7 @@
   </div>
   <div class="mb-3">
     <%= f.label :start_at, "開始した日" %>
-    <%= f.datetime_field :start_at, class: "form-control", value: Time.now.strftime("%Y-%m-%dT%k:%M") %>
+    <%= f.datetime_field :start_at, class: "form-control", value: Time.now.strftime("%Y-%m-%dT%kH:%M") %>
   </div>
 
   <button type="submit" class="btn btn-primary">作成</button>

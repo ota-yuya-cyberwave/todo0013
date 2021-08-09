@@ -2,12 +2,22 @@
   <div class="container-fluid">
     <div class="navbar-expand" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="/categories">Categories</a>
-        <a class="nav-link active" aria-current="page" href="#">Todos</a>
+        <a class="nav-link active" aria-current="page" href="/categories">Categories</a>
       </div>
     </div>
   </div>
 </nav>
 <h1>
-  Todos
+  Categories
 </h1>
+
+<% flash.each do |key, value| %>
+  <% if value.kind_of?(ActiveModel::DeprecationHandlingMessageArray) %>
+    <% value.each do |txt| %>
+      <%= content_tag(:div, txt, class: key) %>
+    <% end %>
+  <% else %>
+    <%= content_tag(:div, value) %>
+  <% end %>
+<% end %>
+<% flash.clear %>
